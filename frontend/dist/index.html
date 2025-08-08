@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranpak – Product Viewer</title>
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="module" crossorigin src="/assets/index-B5Qt9EMX.js"></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app__header" role="banner">
+      <div class="brand">
+        <img src="/fillpak_GUI/logo_01.png" alt="Ranpak" class="brand__logo" />
+      </div>
+      <nav class="app__nav" aria-label="Hoofdnavigatie">
+        <button class="chip is-active" data-cat="fillpak" aria-pressed="true">FILLPAK</button>
+        <button class="chip" data-cat="padpak" aria-pressed="false">PADPAK</button>
+        <button class="chip" data-cat="wrappak" aria-pressed="false">WRAPPAK</button>
+        <button class="chip" data-cat="geami" aria-pressed="false">GEAMI</button>
+      </nav>
+      <div class="app__actions">
+        <label class="sr-only" for="productSelect">Model</label>
+        <select id="productSelect" class="select select--tabs" aria-label="Kies model"></select>
+      </div>
+    </header>
+
+    <main class="app__main" role="main">
+      <section class="info" aria-live="polite">
+        <h1 id="infoTitle" class="info__title">Fillpak</h1>
+        <p id="infoText" class="info__text">&nbsp;</p>
+      </section>
+
+      <section class="viewer" aria-labelledby="viewerTitle">
+        <h2 id="viewerTitle" class="sr-only">Product viewer</h2>
+        <div id="viewer" class="viewer__stage" role="region" aria-label="3D/360° weergave"></div>
+        <div id="viewerStatus" class="viewer__status" role="status" aria-live="polite">Selecteer een model om te laden.</div>
+      </section>
+    </main>
+
+    <footer class="app__footer" role="contentinfo">
+      <small>© Ranpak – Configurator.</small>
+    </footer>
+  </div>
+
+  <script src="/object2vr_player.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
