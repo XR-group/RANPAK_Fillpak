@@ -5,7 +5,7 @@
 .app{min-height:100%;display:grid;grid-template-rows:auto 1fr auto}
 .app__header{display:grid;gap:12px;align-items:end;grid-template-columns:1fr auto auto;padding:16px clamp(16px,2vw,32px);backdrop-filter:saturate(120%) blur(6px)}
 .brand{display:flex;align-items:flex-end;gap:10px}
-.brand__logo{font-size:36px;line-height:1;font-weight:900;color:#000}
+.brand__logo{font-size:64px;line-height:1;font-weight:900;color:#000}
 .app__nav{display:flex;flex-wrap:wrap;gap:32px}
 .app__actions{display:flex;gap:8px;justify-self:end}
 /* Tab-like chips per reference */
