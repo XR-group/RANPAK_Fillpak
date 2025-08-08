@@ -17,7 +17,7 @@ async function loadModel(model){
   // Toon direct status met gekozen model
   setStatus(`${CATALOG[currentCat].label} – ${model.label}`);
   // Clear en toon altijd nette fallback omdat 360° assets ontbreken in repo
-  createPlayer();
+  viewerEl.innerHTML = '';
   const empty=document.createElement('div');
   empty.setAttribute('role','img');
   empty.setAttribute('aria-label','Geen viewer assets gevonden');
