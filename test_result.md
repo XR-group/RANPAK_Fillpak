@@ -4,7 +4,7 @@
 
 **Date:** 2025-08-08  
 **Application:** Single-page Ranpak Product Configurator  
-**URL Tested:** http://localhost:8080 (served via Python HTTP server)  
+**URL Tested:** http://localhost:3000 (Vite dev server)  
 **Test Framework:** Playwright with Python
 
 ## Test Results Overview
@@ -12,40 +12,43 @@
 ### ✅ PASSING TESTS
 
 1. **Page Load Structure**
-   - ✅ Page loads successfully
+   - ✅ Page loads successfully at http://localhost:3000
    - ✅ All 4 category chips present with correct data-cat attributes: fillpak, padpak, wrappak, geami
    - ✅ FillPak chip is initially active with aria-pressed="true"
+   - ✅ Product select has 6 options when FillPak is selected
    - ✅ All required DOM elements exist (#viewer, #viewerStatus, #productSelect, #reloadBtn)
 
-2. **Responsive Design**
-   - ✅ Mobile layout works correctly at 390x800 viewport
-   - ✅ Grid layout changes to single column on mobile
-   - ✅ .app__actions justify-self changes to "start" on mobile
+2. **Selection and Status Updates**
+   - ✅ Can select "FillPak TT" from dropdown
+   - ✅ Reload button works and triggers model loading
+   - ✅ Status text updates correctly to "FillPak – FillPak TT" format
+   - ✅ Status text starts with expected category prefix
 
-3. **Accessibility - Focus Styling**
-   - ✅ Focus styling is visible on chips (3px solid blue outline)
-   - ✅ Focus can be placed on interactive elements
+3. **Category Switching**
+   - ✅ PadPak chip switching works correctly
+   - ✅ PadPak chip gets aria-pressed="true" when clicked
+   - ✅ PadPak chip gets .is-active class when selected
+   - ✅ Product select options update correctly when category changes
+   - ✅ First option becomes "PadPak LC" when PadPak is selected
+
+4. **Responsive Design**
+   - ✅ Mobile layout works correctly at 390x780 viewport
+   - ✅ Media query (max-width: 800px) triggers correctly
+   - ✅ Grid layout changes to single column on mobile (grid-template-columns: 358px)
+   - ✅ .app__actions justify-self changes from "end" to "start" on mobile
+
+5. **JavaScript Functionality**
+   - ✅ All interactive elements work properly
+   - ✅ Event listeners are attached correctly
+   - ✅ Category switching updates both UI and data
+   - ✅ Model selection and status updates function correctly
 
 ### ❌ FAILING TESTS
 
-1. **JavaScript Functionality**
-   - ❌ Product select dropdown has no options populated
-   - ❌ Category switching doesn't work (chips don't change active state)
-   - ❌ Status text doesn't update when models are selected
-   - ❌ Reload button doesn't trigger proper functionality
-
-2. **Keyboard Navigation**
-   - ❌ TAB navigation doesn't work properly between elements
-   - ❌ Focus doesn't move from chips to select to button as expected
-
-3. **Model Selection & Status Updates**
-   - ❌ No "FillPak TT" option available in select
-   - ❌ Status doesn't show expected "FillPak – FillPak TT" text
-   - ❌ PadPak category switching doesn't populate "PadPak LC" option
-
-4. **Fallback Handling**
-   - ❌ No fallback message for missing 360° assets
-   - ❌ No role="img" element created when assets are missing
+1. **Fallback Rendering**
+   - ❌ No fallback element with role="img" created when 360° assets are missing
+   - ❌ Fallback logic checks for XML existence instead of actual image assets
+   - ❌ Console shows "object2vr shim actief: geen 360° assets" but no visual fallback appears
 
 ## Root Cause Analysis
 
