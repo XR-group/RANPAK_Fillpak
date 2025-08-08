@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<script type="text/javascript">
+			// hide URL field on the iPhone/iPod touch
+			function hideUrlBar() {
+				// hide URL field on the iPhone/iPod touch
+				var p = String(navigator.platform);
+	
+				container = document.getElementById("container");
+				if( p === 'iPad' || p === 'iPhone' || p === 'iPod touch' ){
+					var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+					if (parseInt(v[1], 10)>=7) {
+						// iOS >=7
+						if (container) {
+							container.style.top=(0) + "px";
+							container.style.left=(0) + "px";
+							container.style.width=(window.innerWidth) + "px";
+							container.style.height=(window.innerHeight) + "px";
+						}
+						if (obj) {
+							obj.setViewerSize(window.innerWidth, window.innerHeight);
+						}						
+						window.scrollTo(0, 0);
+					} else {
+						if (container) {
+							var cheight;
+							switch(window.innerHeight) {
+								case 208:cheight=268; break; // landscape
+								case 260:cheight=320; break; // landscape, fullscreen
+								case 336:cheight=396; break; // portrait, in call status bar
+								case 356:cheight=416; break; // portrait 
+								case 424:cheight=484; break; // portrait iPhone5, in call status bar
+								case 444:cheight=504; break; // portrait iPhone5 
+								default: cheight=window.innerHeight;
+							}
+							if ((cheight) && ((container.offsetHeight!=cheight) || (window.innerHeight!=cheight))) {
+								container.style.height=cheight + "px";
+							}
+						}
+						document.getElementsByTagName("body")[0].style.marginTop="1px";
+						window.scrollTo(0, 1);
+					}
+				}
+			}            
+			if (window.addEventListener) {
+				window.addEventListener("load", hideUrlBar);
+				window.addEventListener("resize", hideUrlBar);
+				window.addEventListener("orientationchange", hideUrlBar);
+			}
+	
+		</script>
+		<style type="text/css" title="Default">
+			body, div, h1, h2, h3, span, p {
+				font-family: Verdana,Arial,Helvetica,sans-serif;
+				color: #000000; 
+			}
+			/* fullscreen */
+			html {
+				height: 100%;
+			}
+			body {
+				height: 100%;
+				margin: 0px;
+				overflow: hidden; /* disable scrollbars */
+			}
+			body {
+			  font-size: 10pt;
+			  background: #ececec; 
+			}
+			table,tr,td {
+				font-size: 10pt;
+				border-color: #777777;
+				background: #dddddd; 
+				color: #000000; 
+				border-style: solid;
+				border-width: 2px;
+				padding: 5px;
+				border-collapse: collapse;
+			}
+			h1 {
+				font-size: 18pt;
+			}
+			h2 {
+				font-size: 14pt;
+			}
+			.warning { 
+				font-weight: bold;
+			} 
+		</style>	
+	</head>
+	<body>
+		<script type="text/javascript" src="object2vr_player.js">
+		</script>
+		<script type="text/javascript" src="skin_fillpak.js">
+		</script>
+		<div id="container" style="width:100%;height:100%;">
+		This content requires HTML5 &amp; Javascript or Adobe Flash Player Version 9 or higher.
+		</div>
+		<script type="text/javascript">
+	
+			// create the object player with the container
+			obj=new object2vrPlayer("container");
+			// add the skin object
+			skin=new object2vrSkin(obj);
+			// load the configuration
+			str='<?xml version="1.0" encoding="UTF-8"?>';
+				str+='<vrobject>';
+				str+='  <input states="1" windowheight="720" width="1920" imagepath="images_fillpak" preview="4" windowwidth="1280" height="1080" preload="1" columns="36" rows="5" fileextension="jpg"/>';
+				str+='  <control simulatemass="1" lockedmouse="0" swapxy="0" lockedkeyboard="0" dblclickfullscreen="0" revx="0" invertwheel="0" revy="0" wrapx="1" wrapy="0" trapwheel="1" automovemode="1" lockedwheel="0" speedwheel="1.000" controller="1" sensitivity="10"/>';
+				str+='  <view>';
+				str+='    <start row="0" column="0" state="0"/>';
+				str+='    <zoom default="1.000" centerx="0.00000" centery="0.00000" min="1" max="2.000"/>';
+				str+='    <viewer imagescaling="2" backgroundcolor="0xffffff" background="1"/>';
+				str+='  </view>';
+				str+='  <autorotate speed="1.000" delay="5.00" start="0"/>';
+				str+='  <userdata title="" datetime="" description="" copyright="" author="" source="" comment="" info=""/>';
+				str+='  <qthotspots enabled="0" reuse="8">';
+				str+='    <label width="180" backgroundalpha="1.000" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" background="1" borderalpha="1.000" borderradius="1" wordwrap="1" textalpha="1.000"/>';
+				str+='  </qthotspots>';
+				str+='  <hotspots>';
+				str+='    <label width="180" backgroundalpha="1.000" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" background="1" borderalpha="1.000" borderradius="1" wordwrap="1" textalpha="1.000"/>';
+				str+='    <polystyle mode="0" backgroundalpha="0.251" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1.000"/>';
+				str+='    <hotspot title="" target="" skinid="leader_economical" url="" id="Point01" reuse="0">';
+				str+='      <location x="0.586979" y="0.246296" row="0" column="0" state="0"/>';
+				str+='      <location x="0.59375" y="0.249074" row="0" column="1" state="0"/>';
+				str+='      <location x="0.595833" y="0.250926" row="0" column="2" state="0"/>';
+				str+='      <location x="0.594792" y="0.252778" row="0" column="3" state="0"/>';
+				str+='      <location x="0.580729" y="0.243519" row="0" column="35" state="0"/>';
+				str+='      <location x="0.570833" y="0.240741" row="0" column="34" state="0"/>';
+				str+='      <location x="0.558333" y="0.239815" row="0" column="33" state="0"/>';
+				str+='      <location x="0.544271" y="0.238889" row="0" column="32" state="0"/>';
+				str+='      <location x="0.527604" y="0.238889" row="0" column="31" state="0"/>';
+				str+='      <location x="0.5125" y="0.237963" row="0" column="30" state="0"/>';
+				str+='      <location x="0.495313" y="0.237963" row="0" column="29" state="0"/>';
+				str+='      <location x="0.494271" y="0.266667" row="1" column="29" state="0"/>';
+				str+='      <location x="0.510938" y="0.267593" row="1" column="30" state="0"/>';
+				str+='      <location x="0.528646" y="0.267593" row="1" column="31" state="0"/>';
+				str+='      <location x="0.544271" y="0.265741" row="1" column="32" state="0"/>';
+				str+='      <location x="0.558854" y="0.262963" row="1" column="33" state="0"/>';
+				str+='      <location x="0.570833" y="0.262963" row="1" column="34" state="0"/>';
+				str+='      <location x="0.58125" y="0.260185" row="1" column="35" state="0"/>';
+				str+='      <location x="0.589063" y="0.259259" row="1" column="0" state="0"/>';
+				str+='      <location x="0.594792" y="0.256481" row="1" column="1" state="0"/>';
+				str+='      <location x="0.597396" y="0.253704" row="1" column="2" state="0"/>';
+				str+='      <location x="0.596875" y="0.250926" row="1" column="3" state="0"/>';
+				str+='      <location x="0.597917" y="0.256481" row="2" column="3" state="0"/>';
+				str+='      <location x="0.598437" y="0.263889" row="2" column="2" state="0"/>';
+				str+='      <location x="0.596354" y="0.272222" row="2" column="1" state="0"/>';
+				str+='      <location x="0.591146" y="0.27963" row="2" column="0" state="0"/>';
+				str+='      <location x="0.582812" y="0.286111" row="2" column="35" state="0"/>';
+				str+='      <location x="0.572396" y="0.292593" row="2" column="34" state="0"/>';
+				str+='      <location x="0.560417" y="0.298148" row="2" column="33" state="0"/>';
+				str+='      <location x="0.546354" y="0.301852" row="2" column="32" state="0"/>';
+				str+='      <location x="0.529688" y="0.30463" row="2" column="31" state="0"/>';
+				str+='      <location x="0.5125" y="0.305556" row="2" column="30" state="0"/>';
+				str+='      <location x="0.495833" y="0.306481" row="2" column="29" state="0"/>';
+				str+='      <location x="0.495313" y="0.351852" row="3" column="29" state="0"/>';
+				str+='      <location x="0.5125" y="0.350926" row="3" column="30" state="0"/>';
+				str+='      <location x="0.529688" y="0.349074" row="3" column="31" state="0"/>';
+				str+='      <location x="0.546354" y="0.343519" row="3" column="32" state="0"/>';
+				str+='      <location x="0.560938" y="0.337963" row="3" column="33" state="0"/>';
+				str+='      <location x="0.573958" y="0.328704" row="3" column="34" state="0"/>';
+				str+='      <location x="0.583854" y="0.319444" row="3" column="35" state="0"/>';
+				str+='      <location x="0.592188" y="0.309259" row="3" column="0" state="0"/>';
+				str+='      <location x="0.597396" y="0.296296" row="3" column="1" state="0"/>';
+				str+='      <location x="0.6" y="0.284259" row="3" column="2" state="0"/>';
+				str+='      <location x="0.599479" y="0.269444" row="3" column="3" state="0"/>';
+				str+='      <location x="0.593229" y="0.343519" row="4" column="0" state="0"/>';
+				str+='      <location x="0.584375" y="0.358333" row="4" column="35" state="0"/>';
+				str+='      <location x="0.573958" y="0.373148" row="4" column="34" state="0"/>';
+				str+='      <location x="0.561458" y="0.385185" row="4" column="33" state="0"/>';
+				str+='      <location x="0.546354" y="0.393519" row="4" column="32" state="0"/>';
+				str+='      <location x="0.530208" y="0.4" row="4" column="31" state="0"/>';
+				str+='      <location x="0.513021" y="0.402778" row="4" column="30" state="0"/>';
+				str+='      <location x="0.495833" y="0.402778" row="4" column="29" state="0"/>';
+				str+='      <location x="0.598437" y="0.326852" row="4" column="1" state="0"/>';
+				str+='      <location x="0.601562" y="0.309259" row="4" column="2" state="0"/>';
+				str+='      <location x="0.601562" y="0.292593" row="4" column="3" state="0"/>';
+				str+='    </hotspot>';
+				str+='    <hotspot title="" target="" skinid="leader_simple" url="" id="Point02" reuse="0">';
+				str+='      <location x="0.586979" y="0.362037" row="0" column="9" state="0"/>';
+				str+='      <location x="0.584375" y="0.362963" row="0" column="10" state="0"/>';
+				str+='      <location x="0.580729" y="0.365741" row="0" column="11" state="0"/>';
+				str+='      <location x="0.576042" y="0.367593" row="0" column="12" state="0"/>';
+				str+='      <location x="0.570312" y="0.368519" row="0" column="13" state="0"/>';
+				str+='      <location x="0.559896" y="0.362037" row="0" column="4" state="0"/>';
+				str+='      <location x="0.571354" y="0.362963" row="0" column="5" state="0"/>';
+				str+='      <location x="0.578125" y="0.361111" row="0" column="6" state="0"/>';
+				str+='      <location x="0.583333" y="0.362963" row="0" column="7" state="0"/>';
+				str+='      <location x="0.586458" y="0.362037" row="0" column="8" state="0"/>';
+				str+='      <location x="0.570833" y="0.355556" row="1" column="13" state="0"/>';
+				str+='      <location x="0.571354" y="0.342593" row="2" column="13" state="0"/>';
+				str+='      <location x="0.574479" y="0.326852" row="3" column="13" state="0"/>';
+				str+='      <location x="0.573438" y="0.317593" row="4" column="13" state="0"/>';
+				str+='      <location x="0.577604" y="0.356481" row="1" column="12" state="0"/>';
+				str+='      <location x="0.577083" y="0.349074" row="2" column="12" state="0"/>';
+				str+='      <location x="0.578646" y="0.341667" row="3" column="12" state="0"/>';
+				str+='      <location x="0.574479" y="0.334259" row="4" column="12" state="0"/>';
+				str+='      <location x="0.583854" y="0.358333" row="1" column="11" state="0"/>';
+				str+='      <location x="0.582812" y="0.357407" row="2" column="11" state="0"/>';
+				str+='      <location x="0.584375" y="0.360185" row="3" column="11" state="0"/>';
+				str+='      <location x="0.584896" y="0.368519" row="4" column="11" state="0"/>';
+				str+='      <location x="0.586458" y="0.362037" row="1" column="10" state="0"/>';
+				str+='      <location x="0.5875" y="0.363889" row="2" column="10" state="0"/>';
+				str+='      <location x="0.588021" y="0.373148" row="3" column="10" state="0"/>';
+				str+='      <location x="0.589583" y="0.381481" row="4" column="10" state="0"/>';
+				str+='      <location x="0.588542" y="0.364815" row="1" column="9" state="0"/>';
+				str+='      <location x="0.591146" y="0.373148" row="2" column="9" state="0"/>';
+				str+='      <location x="0.589583" y="0.383333" row="3" column="9" state="0"/>';
+				str+='      <location x="0.590625" y="0.399074" row="4" column="9" state="0"/>';
+				str+='      <location x="0.586979" y="0.369444" row="1" column="8" state="0"/>';
+				str+='      <location x="0.589063" y="0.380556" row="2" column="8" state="0"/>';
+				str+='      <location x="0.588021" y="0.396296" row="3" column="8" state="0"/>';
+				str+='      <location x="0.589063" y="0.413889" row="4" column="8" state="0"/>';
+				str+='      <location x="0.584896" y="0.372222" row="1" column="7" state="0"/>';
+				str+='      <location x="0.586458" y="0.385185" row="2" column="7" state="0"/>';
+				str+='      <location x="0.585938" y="0.407407" row="3" column="7" state="0"/>';
+				str+='      <location x="0.585938" y="0.427778" row="4" column="7" state="0"/>';
+				str+='      <location x="0.579687" y="0.375" row="1" column="6" state="0"/>';
+				str+='      <location x="0.580729" y="0.393519" row="2" column="6" state="0"/>';
+				str+='      <location x="0.580729" y="0.413889" row="3" column="6" state="0"/>';
+				str+='      <location x="0.579167" y="0.440741" row="4" column="6" state="0"/>';
+				str+='      <location x="0.573438" y="0.37963" row="1" column="5" state="0"/>';
+				str+='      <location x="0.572917" y="0.399074" row="2" column="5" state="0"/>';
+				str+='      <location x="0.573958" y="0.423148" row="3" column="5" state="0"/>';
+				str+='      <location x="0.574479" y="0.452778" row="4" column="5" state="0"/>';
+				str+='      <location x="0.563542" y="0.380556" row="1" column="4" state="0"/>';
+				str+='      <location x="0.563021" y="0.406481" row="2" column="4" state="0"/>';
+				str+='      <location x="0.564062" y="0.434259" row="3" column="4" state="0"/>';
+				str+='      <location x="0.564583" y="0.462037" row="4" column="4" state="0"/>';
+				str+='    </hotspot>';
+				str+='    <hotspot title="" target="" skinid="leader_compact" url="" id="Point03" reuse="0">';
+				str+='      <location x="0.609896" y="0.800926" row="0" column="23" state="0"/>';
+				str+='      <location x="0.609375" y="0.808333" row="0" column="22" state="0"/>';
+				str+='      <location x="0.607813" y="0.810185" row="0" column="21" state="0"/>';
+				str+='      <location x="0.600521" y="0.813889" row="0" column="20" state="0"/>';
+				str+='      <location x="0.592188" y="0.815741" row="0" column="19" state="0"/>';
+				str+='      <location x="0.580729" y="0.818519" row="0" column="18" state="0"/>';
+				str+='      <location x="0.565625" y="0.821296" row="0" column="17" state="0"/>';
+				str+='      <location x="0.55" y="0.823148" row="0" column="16" state="0"/>';
+				str+='      <location x="0.529688" y="0.822222" row="0" column="15" state="0"/>';
+				str+='      <location x="0.511979" y="0.825926" row="0" column="14" state="0"/>';
+				str+='      <location x="0.508333" y="0.844444" row="1" column="14" state="0"/>';
+				str+='      <location x="0.528646" y="0.839815" row="1" column="15" state="0"/>';
+				str+='      <location x="0.546875" y="0.837037" row="1" column="16" state="0"/>';
+				str+='      <location x="0.564062" y="0.834259" row="1" column="17" state="0"/>';
+				str+='      <location x="0.579167" y="0.826852" row="1" column="18" state="0"/>';
+				str+='      <location x="0.589063" y="0.819444" row="1" column="19" state="0"/>';
+				str+='      <location x="0.6" y="0.812037" row="1" column="20" state="0"/>';
+				str+='      <location x="0.60625" y="0.802778" row="1" column="21" state="0"/>';
+				str+='      <location x="0.607813" y="0.794444" row="1" column="22" state="0"/>';
+				str+='      <location x="0.608333" y="0.785185" row="1" column="23" state="0"/>';
+				str+='      <location x="0.606771" y="0.765741" row="2" column="23" state="0"/>';
+				str+='      <location x="0.606771" y="0.778704" row="2" column="22" state="0"/>';
+				str+='      <location x="0.604167" y="0.792593" row="2" column="21" state="0"/>';
+				str+='      <location x="0.597917" y="0.807407" row="2" column="20" state="0"/>';
+				str+='      <location x="0.590104" y="0.819444" row="2" column="19" state="0"/>';
+				str+='      <location x="0.578125" y="0.832407" row="2" column="18" state="0"/>';
+				str+='      <location x="0.564583" y="0.840741" row="2" column="17" state="0"/>';
+				str+='      <location x="0.546354" y="0.848148" row="2" column="16" state="0"/>';
+				str+='      <location x="0.530208" y="0.851852" row="2" column="15" state="0"/>';
+				str+='      <location x="0.510938" y="0.852778" row="2" column="14" state="0"/>';
+				str+='      <location x="0.510938" y="0.853704" row="3" column="14" state="0"/>';
+				str+='      <location x="0.528646" y="0.849074" row="3" column="15" state="0"/>';
+				str+='      <location x="0.545313" y="0.843518" row="3" column="16" state="0"/>';
+				str+='      <location x="0.5625" y="0.832407" row="3" column="17" state="0"/>';
+				str+='      <location x="0.576563" y="0.821296" row="3" column="18" state="0"/>';
+				str+='      <location x="0.586979" y="0.80463" row="3" column="19" state="0"/>';
+				str+='      <location x="0.596875" y="0.791667" row="3" column="20" state="0"/>';
+				str+='      <location x="0.603125" y="0.774074" row="3" column="21" state="0"/>';
+				str+='      <location x="0.605729" y="0.756481" row="3" column="22" state="0"/>';
+				str+='      <location x="0.604688" y="0.735185" row="3" column="23" state="0"/>';
+				str+='      <location x="0.603125" y="0.706481" row="4" column="23" state="0"/>';
+				str+='      <location x="0.603125" y="0.726852" row="4" column="22" state="0"/>';
+				str+='      <location x="0.600521" y="0.748148" row="4" column="21" state="0"/>';
+				str+='      <location x="0.595833" y="0.769444" row="4" column="20" state="0"/>';
+				str+='      <location x="0.586979" y="0.787037" row="4" column="19" state="0"/>';
+				str+='      <location x="0.576042" y="0.805556" row="4" column="18" state="0"/>';
+				str+='      <location x="0.561458" y="0.817593" row="4" column="17" state="0"/>';
+				str+='      <location x="0.545833" y="0.828704" row="4" column="16" state="0"/>';
+				str+='      <location x="0.529167" y="0.838889" row="4" column="15" state="0"/>';
+				str+='      <location x="0.511458" y="0.840741" row="4" column="14" state="0"/>';
+				str+='    </hotspot>';
+				str+='  </hotspots>';
+				str+='</vrobject>';
+				str+='';
+			obj.readConfigString(str);
+			// hide the URL bar on the iPhone
+			setTimeout(function() { hideUrlBar(); }, 10);
+		</script>
+		<noscript>
+			<p><b>Please enable Javascript!</b></p>
+		</noscript>
+	</body>
+</html>
