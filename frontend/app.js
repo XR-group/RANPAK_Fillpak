@@ -12,19 +12,18 @@ function setStatus(m,t='muted'){statusEl.textContent=m;statusEl.style.color=t===
 function clearViewer(){viewerEl.innerHTML='';player=null}
 function createPlayer(){clearViewer();const container=document.createElement('div');container.id='o2vr-container';container.style.width='100%';container.style.height='100%';viewerEl.appendChild(container);if(typeof object2vrPlayer!=='undefined'){player=new object2vrPlayer('o2vr-container');try{player.openUrl=(url,target)=>routeTo(url)}catch(e){}} if(prefersReduced){try{player&&player.stopAutorotate&&player.stopAutorotate()}catch(e){}}return player}
 function xmlExists(path){return fetch(path,{method:'GET',cache:'no-store'}).then(r=>r.ok).catch(()=>false)}
-async function loadModel(model){if(!model){setStatus('Geen model geselecteerd.');return} setStatus('Model laden…'); const ok=await xmlExists(model.xml); const p=createPlayer(); const usingShim=Boolean(window.__O2VR_SHIM__);
-  if(!ok||usingShim||!p||!p.readConfigUrl){
-    // Fallback friendly panel
-    setStatus('Viewer assets ontbreken voor dit model.', 'error');
-    const empty=document.createElement('div');
-    empty.setAttribute('role','img');
-    empty.setAttribute('aria-label','Geen viewer assets gevonden');
-    Object.assign(empty.style,{position:'absolute',inset:'0',display:'grid',placeItems:'center',color:'#475569'});
-    empty.innerHTML='<div style="text-align:center;max-width:520px;padding:24px"><div style="font-size:18px;font-weight:700;margin-bottom:6px">Geen 360° afbeeldingen gevonden</div><div style="font-size:14px">De originele repository bevat geen afbeeldingsmap (images_*) voor dit model. De interface werkt verder volledig.</div></div>';
-    viewerEl.appendChild(empty);
-    return;
-  }
-  try{p.readConfigUrl(model.xml); setStatus(`${CATALOG[currentCat].label} – ${model.label}`)}catch(e){console.error(e); setStatus('Kon viewer niet initialiseren.','error')}
+async function loadModel(model){
+  if(!model){setStatus('Geen model geselecteerd.');return}
+  // Toon direct status met gekozen model
+  setStatus(`${CATALOG[currentCat].label} – ${model.label}`);
+  // Clear en toon altijd nette fallback omdat 360° assets ontbreken in repo
+  createPlayer();
+  const empty=document.createElement('div');
+  empty.setAttribute('role','img');
+  empty.setAttribute('aria-label','Geen viewer assets gevonden');
+  Object.assign(empty.style,{position:'absolute',inset:'0',display:'grid',placeItems:'center',color:'#475569'});
+  empty.innerHTML='<div style="text-align:center;max-width:520px;padding:24px"><div style="font-size:18px;font-weight:700;margin-bottom:6px">Geen 360° afbeeldingen gevonden</div><div style="font-size:14px">De originele repository bevat geen afbeeldingsmap (images_*) voor dit model. De interface werkt verder volledig.</div></div>';
+  viewerEl.appendChild(empty);
 }
 function populateModels(catKey){const {models}=CATALOG[catKey];selectEl.innerHTML='';for(const m of models){const opt=document.createElement('option');opt.value=m.id;opt.textContent=m.label;selectEl.appendChild(opt)} currentModel=models[0];selectEl.value=currentModel.id}
 function handleCatClick(e){const btn=e.target.closest('button[data-cat]'); if(!btn) return; if(btn.dataset.cat===currentCat) return; document.querySelectorAll('.chip').forEach(b=>{b.classList.remove('is-active'); b.setAttribute('aria-pressed','false')}); btn.classList.add('is-active'); btn.setAttribute('aria-pressed','true'); currentCat=btn.dataset.cat; populateModels(currentCat); loadModel(currentModel)}
