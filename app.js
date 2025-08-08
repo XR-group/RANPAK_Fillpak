@@ -148,8 +148,12 @@
     if (!btn) return;
     if (btn.dataset.cat === currentCat) return;
 
-    document.querySelectorAll('.chip').forEach(b => b.classList.remove('is-active'));
+    document.querySelectorAll('.chip').forEach(b => {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('is-active');
+    btn.setAttribute('aria-pressed', 'true');
 
     currentCat = btn.dataset.cat;
     populateModels(currentCat);
