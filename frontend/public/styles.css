@@ -11,7 +11,9 @@
 /* Tab-like chips per reference */
 .chip{appearance:none;border:0;cursor:pointer;background:transparent;color:#000;padding:6px 0;border-bottom:4px solid transparent;text-transform:uppercase;letter-spacing:.02em;font-weight:800;font-size:16px}
 .chip.is-active{border-color:var(--chip-active)}
-.select{padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#000}
+.select{appearance:none;padding:10px 12px;border:0;border-bottom:4px solid transparent;border-radius:0;background:#fff;color:#000;font-weight:800;text-transform:none}
+.select:focus{border-bottom-color:#1ea7fd}
+.select--tabs option{font-weight:700}
 .btn{padding:10px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-weight:600;color:#000}
 .btn:focus,.select:focus,.chip:focus{outline:3px solid #93c5fd;outline-offset:2px}
 .app__main{padding:16px clamp(16px,2vw,32px)}
