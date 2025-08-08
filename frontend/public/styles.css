@@ -15,9 +15,9 @@
 .chip.is-active{border-color:var(--chip-active)}
 .chip::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:4px;background:var(--chip-active);transition:right .25s ease}
 .chip:hover::after{right:0}
-/* Custom select with arrow and default outline */
-.select{appearance:none;padding:10px 36px 10px 12px;border:0;border-bottom:4px solid #1ea7fd;border-radius:0;background:#fff;color:#000;font-weight:800;text-transform:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:12px 8px}
-.select:focus{border-bottom-color:#127bbf}
+/* Custom select with arrow: default black frame, underline only when active */
+.select{appearance:none;padding:10px 36px 10px 12px;border:2px solid #000;border-radius:10px;background:#fff;color:#000;font-weight:800;text-transform:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:12px 8px}
+.select:focus{outline:none;box-shadow:inset 0 -4px 0 #1ea7fd}
 .select--tabs option{font-weight:700}
 .app__main{padding:16px clamp(16px,2vw,32px)}
 .info{max-width:980px;margin:0 auto 12px}
