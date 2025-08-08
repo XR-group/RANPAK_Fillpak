@@ -11,11 +11,13 @@
 .app__nav{display:flex;flex-wrap:wrap;gap:32px}
 .app__actions{display:flex;gap:8px;justify-self:end}
 /* Tab-like chips per reference */
-.chip{appearance:none;border:0;cursor:pointer;background:transparent;color:#000;padding:6px 0;border-bottom:4px solid transparent;text-transform:uppercase;letter-spacing:.02em;font-weight:800;font-size:16px}
+.chip{appearance:none;border:0;cursor:pointer;background:transparent;color:#000;padding:6px 0;border-bottom:4px solid transparent;text-transform:uppercase;letter-spacing:.02em;font-weight:800;font-size:16px;position:relative}
 .chip.is-active{border-color:var(--chip-active)}
-/* Custom select with arrow */
-.select{appearance:none;padding:10px 36px 10px 12px;border:0;border-bottom:4px solid transparent;border-radius:0;background:#fff;color:#000;font-weight:800;text-transform:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:12px 8px}
-.select:focus{border-bottom-color:#1ea7fd}
+.chip::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:4px;background:var(--chip-active);transition:right .25s ease}
+.chip:hover::after{right:0}
+/* Custom select with arrow and default outline */
+.select{appearance:none;padding:10px 36px 10px 12px;border:0;border-bottom:4px solid #1ea7fd;border-radius:0;background:#fff;color:#000;font-weight:800;text-transform:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:12px 8px}
+.select:focus{border-bottom-color:#127bbf}
 .select--tabs option{font-weight:700}
 .app__main{padding:16px clamp(16px,2vw,32px)}
 .info{max-width:980px;margin:0 auto 12px}
@@ -26,8 +28,9 @@
 .viewer__status{margin-top:10px;color:#000}
 /* Annotation overlay */
 .annotations{position:absolute;inset:0;pointer-events:none}
-.annotation{position:absolute;max-width:320px;color:#000}
+.annotation{position:absolute;max-width:360px;color:#000;animation:fadein .25s ease}
 .annotation__title{font-weight:800;margin:0 0 4px;border-bottom:4px solid #1ea7fd;display:inline-block;padding-bottom:2px}
 .annotation__text{margin:0;font-size:14px;line-height:1.5}
+@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .app__footer{padding:16px clamp(16px,2vw,32px);color:#000}
 @media (max-width:800px){.app__header{grid-template-columns:1fr;gap:10px}.app__actions{justify-self:start}}

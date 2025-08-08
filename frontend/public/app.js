@@ -37,10 +37,30 @@ function setStatus(m,t='muted'){statusEl.textContent=m;statusEl.style.color=t===
 function clearViewer(){viewerEl.innerHTML='';player=null; if(annotLoop){cancelAnimationFrame(annotLoop);annotLoop=null}}
 function createPlayer(){clearViewer();const container=document.createElement('div');container.id='o2vr-container';container.style.width='100%';container.style.height='100%';viewerEl.appendChild(container);annoLayer=document.createElement('div');annoLayer.className='annotations';viewerEl.appendChild(annoLayer);player=new object2vrPlayer('o2vr-container');try{player.openUrl=(url,target)=>routeTo(url)}catch(e){}if(prefersReduced){try{player.stopAutorotate&&player.stopAutorotate()}catch(e){}}return player}
 
-// Simple custom annotation system
+// Leaders uit de oude omgeving (kolommenlogica afgeleid uit hotspots in fillpack_out.xml)
 const HOTSPOTS = {
   fillpak_classic: [
-    { id:'simple', title:'Simple', text:'Easy installation with no training necessary. Eliminates the need for labor‑intensive paper crumpling by hand.', when:c=>c.col>=10 && c.col<=16, pos:(w,h)=>({left: Math.round(w*0.55)+"px", top: Math.round(h*0.30)+"px"}) }
+    {
+      id:'economical',
+      title:'Economical',
+      text:'Cost-effective paper usage with optimized output.',
+      when:c=> (c.col>=29 && c.col<=35) || (c.col>=0 && c.col<=3),
+      pos:(w,h)=>({left: Math.round(w*0.56)+"px", top: Math.round(h*0.24)+"px"})
+    },
+    {
+      id:'simple',
+      title:'Simple',
+      text:'Easy installation with no training necessary. Eliminates the need for labor‑intensive paper crumpling by hand.',
+      when:c=> (c.col>=4 && c.col<=13),
+      pos:(w,h)=>({left: Math.round(w*0.58)+"px", top: Math.round(h*0.32)+"px"})
+    },
+    {
+      id:'compact',
+      title:'Compact',
+      text:'Small footprint, ergonomic operation and placement.',
+      when:c=> (c.col>=14 && c.col<=23),
+      pos:(w,h)=>({left: Math.round(w*0.60)+"px", top: Math.round(h*0.78)+"px"})
+    }
   ]
 };
 
