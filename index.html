@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ranpak – Product Viewer</title>
+  <meta name="theme-color" content="#ececec" />
+  <link rel="preload" as="script" href="object2vr_player.js" />
+  <link rel="preload" as="script" href="app.js" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app__header" role="banner">
+      <div class="brand">
+        <img alt="Ranpak" class="brand__logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTgwIDUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjAiIHk9IjM3IiBmb250LXNpemU9IjM2IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZpbGw9IiMzMzMiPkJhY2sgVmlld2VyPC90ZXh0Pjwvc3ZnPiIg/>
+      </div>
+      <nav class="app__nav" aria-label="Hoofdnavigatie">
+        <button class="chip is-active" data-cat="fillpak" aria-pressed="true">FillPak</button>
+        <button class="chip" data-cat="padpak" aria-pressed="false">PadPak</button>
+        <button class="chip" data-cat="wrappak" aria-pressed="false">WrapPak</button>
+        <button class="chip" data-cat="geami" aria-pressed="false">Geami</button>
+      </nav>
+      <div class="app__actions">
+        <label class="sr-only" for="productSelect">Model</label>
+        <select id="productSelect" class="select" aria-label="Kies model">
+          <!-- options injected by JS -->
+        </select>
+        <button id="reloadBtn" class="btn" type="button">Herlaad</button>
+      </div>
+    </header>
+
+    <main class="app__main" role="main">
+      <section class="viewer" aria-labelledby="viewerTitle">
+        <h1 id="viewerTitle" class="sr-only">Product viewer</h1>
+        <div id="viewer" class="viewer__stage" role="region" aria-label="3D/360° weergave"></div>
+        <div id="viewerStatus" class="viewer__status" role="status" aria-live="polite">
+          Selecteer een model om te laden.
+        </div>
+      </section>
+    </main>
+
+    <footer class="app__footer" role="contentinfo">
+      <small>© Ranpak – Demo configurator. Kleuren conform origineel. Achtergrond schaalt altijd ‘cover’.</small>
+    </footer>
+  </div>
+
+  <script src="object2vr_player.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
