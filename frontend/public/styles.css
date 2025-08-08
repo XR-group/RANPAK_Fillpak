@@ -1,4 +1,4 @@
-/* updated CSS */
+/* updated CSS with GT America and white background */
 @font-face{font-family:'GT America';src:url('/fonts/GT-America/GT-America-Standard-Regular-Trial.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'GT America';src:url('/fonts/GT-America/GT-America-Standard-Bold-Trial.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
 :root{--card:#ffffff;--text:#000;--muted:#000;--brand:#2b6cb0;--chip-active:#1ea7fd;--radius:12px;--shadow:0 6px 24px rgba(0,0,0,.08)}
@@ -23,5 +23,7 @@
 .viewer{max-width:1400px;margin:0 auto}
 .viewer__stage{width:100%;height:clamp(420px,68vh,820px);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);position:relative;overflow:hidden}
 .viewer__status{margin-top:10px;color:#000}
+/* Hide legacy skin nav buttons, keep image overlays */
+#o2vr-container .ggskin_button{display:none !important}
 .app__footer{padding:16px clamp(16px,2vw,32px);color:#000}
 @media (max-width:800px){.app__header{grid-template-columns:1fr;gap:10px}.app__actions{justify-self:start}}
