@@ -1,0 +1,11 @@
+frontend/node_modules/
+node_modules/
+frontend/yarn.lock
+yarn.lock
+frontend/dist/
+dist/
+.env
+.env.local
+.env.production
+.DS_Store
+Thumbs.db
